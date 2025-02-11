@@ -1,8 +1,8 @@
-# IBM-HR-Analytics-Employee-Attrition-Performance-SQL-Project
+# 📊 IBM HR Analytics: Employee Attrition & Performance – SQL Project
 
 ![IBM Logo](https://upload.wikimedia.org/wikipedia/commons/5/51/IBM_logo.svg)
 
-## Description
+## 🔍 Project Overview
 
 This project focuses on analyzing employee attrition and performance using SQL, based on the **IBM HR Analytics Employee Attrition & Performance** dataset. The goal is to uncover insights into why employees leave the organization, identify key factors influencing attrition, and evaluate employee performance metrics. The dataset includes various attributes such as employee demographics, job roles, satisfaction levels, work-life balance, and more.
 
@@ -19,7 +19,7 @@ By leveraging SQL queries, this project explores trends, patterns, and correlati
 
 5). Work Environment Factors: Investigate the impact of work-life balance, overtime, and job involvement on employee retention.
 
-## Key Features
+## 🎯 Key Objectives
 1). SQL Queries: Comprehensive SQL scripts for data exploration, cleaning, and analysis.
 
 2). Insights and Visualizations: Key findings and trends derived from the dataset (visualizations can be added using tools like Tableau or Power BI).
@@ -28,7 +28,7 @@ By leveraging SQL queries, this project explores trends, patterns, and correlati
 
 4). Documentation: Detailed explanations of the SQL queries and their purpose.
 
-## How to Use
+## 🛠️ How to Use
 1). Clone the repository or download the SQL scripts.
 
 2). Load the dataset into your preferred SQL database (e.g., MySQL, PostgreSQL).
@@ -36,3 +36,5 @@ By leveraging SQL queries, this project explores trends, patterns, and correlati
 3). Execute the SQL queries to perform the analysis.
 
 4). Use the insights to create reports or visualizations for stakeholders.
+
+🚀 Stay tuned for updates and future enhancements!
