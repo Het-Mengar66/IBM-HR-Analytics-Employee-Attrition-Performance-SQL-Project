@@ -36,10 +36,3 @@ By leveraging SQL queries 🛢️📊, this project explores trends, patterns, a
 2️⃣ Load the dataset into your preferred SQL database (e.g., MySQL 🛢️, PostgreSQL 🐘).
 3️⃣ Execute the SQL queries to perform the analysis 📊.
 4️⃣ Use the insights to create reports 📑 or visualizations 📉 for stakeholders.
-
-💡 Future Enhancements 🔄:
-
-1). More advanced queries 🏆 for deeper insights
-2). Power BI & Tableau dashboards 📊 for better visualization
-3). Machine Learning models 🤖 to predict attrition trends
-🚀 Stay tuned for updates and future enhancements! 🔥📢
