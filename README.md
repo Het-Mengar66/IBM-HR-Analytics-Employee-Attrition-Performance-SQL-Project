@@ -8,232 +8,31 @@ This project focuses on analyzing employee attrition and performance using SQL, 
 
 By leveraging SQL queries, this project explores trends, patterns, and correlations within the data to help organizations make data-driven decisions to reduce attrition and improve employee retention.
 
-## Objective
+## Analysis Goals
+1). Employee Attrition Analysis: Identify the percentage of employees who left the company and explore the reasons behind their departure.
 
-SELECT 
-    *
-FROM
-    ibm;
+2). Performance Metrics: Evaluate employee performance ratings and their relationship with factors like job role, department, and satisfaction levels.
 
--- This script analyzes employee attrition trends, identifying key factors that contribute to employee turnover.
+3). Demographic Insights: Analyze how age, gender, and marital status impact attrition and performance.
 
+4). Department and Job Role Analysis: Compare attrition rates and performance across different departments and job roles.
 
--- 1) What is the average attrition rate?
+5). Work Environment Factors: Investigate the impact of work-life balance, overtime, and job involvement on employee retention.
 
+## Key Features
+1). SQL Queries: Comprehensive SQL scripts for data exploration, cleaning, and analysis.
 
-SELECT 
-    (SUM(Attrition = 'Yes') * 100.0 / COUNT(*)) AS Attrition_rate
-FROM
-    ibm;
+2). Insights and Visualizations: Key findings and trends derived from the dataset (visualizations can be added using tools like Tableau or Power BI).
 
+3). Dataset: The IBM HR Analytics Employee Attrition & Performance dataset is included for reference.
 
--- 2) Which department has highest Attrition rate?
+4). Documentation: Detailed explanations of the SQL queries and their purpose.
 
+## How to Use
+1). Clone the repository or download the SQL scripts.
 
-SELECT 
-    Department,
-    (SUM(Attrition = 'Yes') * 100.0 / COUNT(*)) AS Attrition_rate,
-    COUNT(*) AS Total_employee,
-    SUM(Attrition = 'Yes') AS Employee_left
-FROM
-    ibm
-GROUP BY Department
-ORDER BY Attrition_rate;
+2). Load the dataset into your preferred SQL database (e.g., MySQL, PostgreSQL).
 
+3). Execute the SQL queries to perform the analysis.
 
--- 3) Is there a correlation between Age and Attrition?
-
-
-SELECT 
-    Age,
-    (SUM(Attrition = 'Yes') * 100.0 / COUNT(*)) AS Attrition_rate
-FROM
-    ibm
-GROUP BY Age
-ORDER BY Age;
-
-
--- 4) Maximum and Minimum Attrition rate from the Age group
-
-
-WITH AgeAttrition AS (
-    SELECT 
-        Age,
-        (SUM(Attrition = 'Yes') * 100 / COUNT(*)) AS Attrition_Rate
-    FROM ibm
-    GROUP BY Age
-)
-SELECT Age, Attrition_Rate
-FROM AgeAttrition
-WHERE Attrition_Rate = (SELECT MAX(Attrition_Rate) FROM AgeAttrition)
-   OR Attrition_Rate = (SELECT MIN(Attrition_Rate) FROM AgeAttrition);
-
-
--- 5) How does the Job satisfaction relate to Attrition
-
-
-SELECT 
-    JobSatisfaction,
-    (SUM(Attrition = 'Yes') * 100 / COUNT(*)) AS Attrition_Rate_Left,
-    (SUM(Attrition = 'No') * 100 / COUNT(*)) AS Attrition_Rate_Stayed
-FROM
-    ibm
-GROUP BY JobSatisfaction
-ORDER BY JobSatisfaction DESC;
-
-
--- 6) Is Salary a significant factor in employee Attrition?
-
-
-SELECT 
-    MonthlyIncome,
-    (SUM(Attrition = 'Yes') * 100 / COUNT(*)) AS Attrition_Rate_Left,
-    (SUM(Attrition = 'No') * 100 / COUNT(*)) AS Attrition_Rate_Stayed
-FROM
-    ibm
-GROUP BY MonthlyIncome
-ORDER BY MonthlyIncome;
-
-
--- 7) How does Attrition vary by Job role and Job level?
-
-
-SELECT 
-    JobRole,
-    (SUM(Attrition = 'Yes') * 100 / COUNT(*)) AS Attrition_Rate
-FROM
-    ibm
-GROUP BY JobRole
-ORDER BY JobRole DESC;
-
-
--- 8) How does the Distance from home can relate to Attrition?
-
-
-SELECT 
-    DistanceFromHome,
-    (SUM(Attrition = 'Yes') * 100 / COUNT(*)) AS Attrition_rate_percentage
-FROM
-    ibm
-GROUP BY DistanceFromHome
-ORDER BY Attrition_rate_percentage DESC;
-
-
--- 9) What is the Impact of work life balance on Attrition?
-
-
-SELECT 
-    WorkLifeBalance,
-    (SUM(Attrition = 'Yes') * 100 / COUNT(*)) AS Attrition_Rate
-FROM
-    ibm
-GROUP BY WorkLifeBalance
-ORDER BY WorkLifeBalance DESC;
-
--- This script analyzes employee Demographics trends, identifying key factors that contribute to employee turnover.
-
-
--- 10) What is the distribution of employee by age, gender &  material status
-
-
-SELECT 
-    Age, Gender, MaritalStatus, COUNT(*) AS Employee_Count
-FROM
-    ibm
-GROUP BY Age , Gender , MaritalStatus
-ORDER BY Age , Gender , MaritalStatus;
-
-
--- 11) Which Education field is most common employee?
-
-
-SELECT 
-    EducationField,
-    COUNT(*) AS Employee_count,
-    (COUNT(*) * 100.0 / (SELECT 
-            COUNT(*)
-        FROM
-            ibm)) AS Percentage
-FROM
-    ibm
-GROUP BY EducationField
-ORDER BY Percentage DESC;
-
-
--- 12) How does gender distribution vary across job roles?
-
-
-SELECT 
-    JobRole, Gender, COUNT(*) AS Employee_count
-FROM
-    ibm
-GROUP BY JobRole , Gender
-ORDER BY JobRole , Gender;
-
-
--- This script analyzes employee job role and performance, identifying key factors that contribute to employee turnover.
-
-
--- 13) Which Job role has highest and lowest monthly income?
-
-WITH salary_table AS (
-SELECT 
-    JobRole, 
-    ROUND(AVG(MonthlyIncome), 2) AS Avg_Salary
-FROM ibm
-GROUP BY JobRole
-)
-SELECT JobRole, Avg_salary
-FROM salary_table
-WHERE Avg_salary = (SELECT MAX(AVG_salary) FROM salary_table)
-OR	  Avg_salary = (SELECT MIN(AVG_salary) FROM salary_table);
-
-
--- 14) Relantionship between Job level and performance rating
-
-
-SELECT 
-    JobLevel,
-    COUNT(*) AS Employee_Count,
-    ROUND(AVG(PerformanceRating), 2) AS Avg_Performance_Rating
-FROM
-    ibm
-GROUP BY JobLevel
-ORDER BY JobLevel;
-
-
--- This script analyzes carrer growth and promotions, identifying key factors that contribute to employee turnover.
-
--- 15) What is the Average salary hikes in there job role
-
-SELECT 
-    JobRole,
-    ROUND(AVG(PercentSalaryHike), 2) AS Avg_Per_salary_hikes
-FROM
-    ibm
-GROUP BY JobRole
-ORDER BY Avg_Per_salary_hikes;
-
-
--- 16) What is the average number of years employee stay in there current role?
-
-
-SELECT 
-    JobRole,
-    ROUND(AVG(YearsInCurrentRole), 2) AS AVG_Years_In_CurrentRole
-FROM
-    ibm
-GROUP BY JobRole
-ORDER BY AVG_Years_In_CurrentRole DESC;
-
-
--- 17) What is the average salary hike percentage who left VS who stayed?
-
-
-SELECT 
-    Attrition,
-    ROUND(AVG(PercentSalaryHike), 2) AS Avg_Salary_Hike
-FROM
-    ibm
-GROUP BY Attrition;
-
+4). Use the insights to create reports or visualizations for stakeholders.
