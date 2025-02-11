@@ -39,7 +39,7 @@ By leveraging SQL queries 🛢️📊, this project explores trends, patterns, a
 
 💡 Future Enhancements 🔄:
 
-More advanced queries 🏆 for deeper insights
-Power BI & Tableau dashboards 📊 for better visualization
-Machine Learning models 🤖 to predict attrition trends
+1). More advanced queries 🏆 for deeper insights
+2). Power BI & Tableau dashboards 📊 for better visualization
+3). Machine Learning models 🤖 to predict attrition trends
 🚀 Stay tuned for updates and future enhancements! 🔥📢
