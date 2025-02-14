@@ -33,6 +33,9 @@ By leveraging SQL queries 🛢️📊, this project explores trends, patterns, a
 
 ## 🛠️ How to Use ⚙️📌
 1️⃣ Clone the repository or download the SQL scripts 📂🔽.
+
 2️⃣ Load the dataset into your preferred SQL database (e.g., MySQL 🛢️, PostgreSQL 🐘).
+
 3️⃣ Execute the SQL queries to perform the analysis 📊.
+
 4️⃣ Use the insights to create reports 📑 or visualizations 📉 for stakeholders.
